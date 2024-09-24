@@ -21,7 +21,7 @@ export default function AdminLayout({ children }) {
             </div>
             <div className="flex justify-center items-center py-4 border-t-4">
               <Link
-                to="/"
+                to="/login"
                 className="flex items-center text-xl font-bold rounded-lg gap-3 px-3 py-4 text-muted-foreground transition-all hover:text-primary hover:bg-[#77e4c936]"
               >
                 <ArrowLeftToLine className="h-7 w-7" />
@@ -47,16 +47,18 @@ export default function AdminLayout({ children }) {
               <SheetContent side="left" className="flex flex-col w-80 bg-white">
                 <div className="flex justify-center items-center pt-8">
                   <h1 className="font-bold text-4xl font-cursive text-[#77E4C8] pb-8">
-                    Net.Kitchen
+                    Online Shop
                   </h1>
                 </div>
                 <div className="flex-1">
                   <SidebarResponsive />
                 </div>
                 <div className="flex justify-center items-center pb-8">
-                  <Button variant="primary" className="w-3/4">
-                    Logout
-                  </Button>
+                  <Link to="/login">
+                    <Button variant="primary" className="w-full">
+                      Logout
+                    </Button>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>

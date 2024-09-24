@@ -1,22 +1,28 @@
 import AdminLayout from "../../components/layout/admin/Layout";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
+import { fetchGetUserById } from "@/api/Users/fetchGetUserById";
 
 export default function Profile() {
+  const [user, setUser] = useState({});
+
+  const getUserById = async () => {
+    const usersData = await fetchGetUserById();
+    setUser(usersData);
+    // console.log(usersData);
+  };
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
   return (
     <>
       <AdminLayout>
         <div className="bg-white border shadow-lg rounded-md p-4">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12 lg:col-span-4 flex justify-center items-center">
-              <img
-                src="../images/Auth1.avif"
-                alt="profile"
-                className="rounded-full border-4 border-[#77E4C8]"
-              />
-            </div>
-            <div className="col-span-12 lg:col-span-8">
+            <div className="col-span-12">
               <div>
                 <form action="">
                   <div className="mb-4">
@@ -28,7 +34,8 @@ export default function Profile() {
                       id="name"
                       name="name"
                       className="mt-2"
-                      placeholder="Name"
+                      value={user.name}
+                      readOnly
                     />
                   </div>
                   <div className="mb-4">
@@ -40,37 +47,22 @@ export default function Profile() {
                       id="email"
                       name="email"
                       className="mt-2"
-                      placeholder="Email"
+                      value={user.email}
+                      readOnly
                     />
                   </div>
                   <div className="mb-4">
                     <Label>
-                      Phone Number <span className="text-red-500">*</span>
+                      Password <span className="text-red-500">*</span>
                     </Label>
                     <Input
                       type="text"
-                      id="phoneNumber"
-                      name="phoneNumber"
+                      id="password"
+                      name="password"
                       className="mt-2"
-                      placeholder="Phone Number"
+                      value={user.password}
+                      readOnly
                     />
-                  </div>
-                  <div className="mb-4">
-                    <Label>
-                      Profile Picture <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      type="file"
-                      id="profilePictureUrl"
-                      name="profilePictureUrl"
-                      className="mt-2"
-                      placeholder="Profile Picture"
-                    />
-                  </div>
-                  <div className="flex justify-end">
-                    <Button type="submit" variant="primary">
-                      Simpan
-                    </Button>
                   </div>
                 </form>
               </div>

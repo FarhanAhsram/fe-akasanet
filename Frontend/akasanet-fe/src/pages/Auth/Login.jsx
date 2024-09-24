@@ -52,9 +52,15 @@ export default function Login() {
                     )}
                   </div>
                 </div>
-                <Button variant="default" type="submit" className="w-full mt-2">
-                  Login
-                </Button>
+                <Link to="/">
+                  <Button
+                    variant="default"
+                    type="submit"
+                    className="w-full mt-2"
+                  >
+                    Login
+                  </Button>
+                </Link>
               </form>
             </div>
             <div className="flex justify-center items-center my-6">

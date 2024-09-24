@@ -4,6 +4,13 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { fetchAddProduct } from "@/api/Products/fetchAddProduct";
 import Swal from "sweetalert2";
+import { Select } from "@radix-ui/react-select";
+import {
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 /* eslint-disable react/prop-types */
 
 export default function AddProduct({ handleModalAdd, getProducts }) {
@@ -13,7 +20,7 @@ export default function AddProduct({ handleModalAdd, getProducts }) {
     category: "",
     qty: "",
     price: "",
-    isActive: "",
+    is_active: "",
   });
 
   const handleCreateProductChange = (e) => {
@@ -143,18 +150,26 @@ export default function AddProduct({ handleModalAdd, getProducts }) {
               </div>
             </div>
             <div className="mb-4">
-              <Label htmlFor="isActive">
+              <Label htmlFor="is_active">
                 isActive <span className="text-red-500">*</span>
               </Label>
-              <Input
-                type="number"
-                id="isActive"
-                name="isActive"
-                className="mt-2"
-                placeholder="isActive"
+              <Select
+                id="is_active"
+                name="is_active"
+                className="mt-1"
                 required
-                onChange={handleCreateProductChange}
-              />
+                onValueChange={(value) =>
+                  setForm({ ...form, is_active: value })
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select isActive" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">Yes</SelectItem>
+                  <SelectItem value="0">No</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="flex justify-end gap-6">
               <Button variant="ghost" onClick={handleModalAdd}>

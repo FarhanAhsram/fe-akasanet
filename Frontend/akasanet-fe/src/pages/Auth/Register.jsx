@@ -19,12 +19,21 @@ export default function Register() {
           <div className="flex justify-center items-center rounded-xl max-lg:hidden">
             <img src="../images/Auth1.avif" alt="" className="mx-auto w-4/5" />
           </div>
-          <div className="grid items-center px-10 py-8 bg-[#77E4C8] rounded-l-lg">
+          <div className="grid items-center px-10 py-8 bg-[#77E4C8] rounded-r-lg">
             <div className="grid items-center mb-8">
               <h1 className="text-4xl font-bold font-cursive">Register</h1>
             </div>
             <div className="my-6 lg:m-0">
               <form action="">
+                <Label className="text-base">Name</Label>
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="my-3"
+                  placeholder="Name"
+                  required
+                />
                 <Label className="text-base">Email</Label>
                 <Input
                   type="email"
@@ -55,14 +64,20 @@ export default function Register() {
                     )}
                   </div>
                 </div>
-                <Button variant="default" type="submit" className="w-full mt-2">
-                  Register
-                </Button>
+                <Link to="/login">
+                  <Button
+                    variant="default"
+                    type="submit"
+                    className="w-full mt-2"
+                  >
+                    Register
+                  </Button>
+                </Link>
               </form>
             </div>
             <div className="flex justify-center items-center">
               <p>Already have an account?</p>
-              <Link to="/">
+              <Link to="/login">
                 <Button variant="link">Sign In Here</Button>
               </Link>
             </div>

@@ -1,0 +1,29 @@
+GET http://localhost:5000/users 
+
+###
+GET http://localhost:5000/users/1
+
+###
+POST http://localhost:5000/users 
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.doe@gmail.com",
+    "password": "$2ysmamaskmdksamkmmkam",
+    "token": "Eyhcsadkaskdjkasdkasdkjaskjdjaskasjk" 
+}
+
+###
+PATCH http://localhost:5000/users/2 
+Content-Type: application/json
+
+{
+    "name": "Elsa",
+    "email": "elsa@gmail.com",
+    "password": "$2ysmamaskmdksamkmmkam",
+    "token": "Eyhcsadkaskdjkasdkasdkjaskjdjaskasjk" 
+}
+
+###
+DELETE  http://localhost:5000/users/2 
